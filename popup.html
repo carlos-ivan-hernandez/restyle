@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="ui.css" />
+    <style>
+      body {
+        width: 320px;
+        padding: 12px;
+        display: grid;
+        gap: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <h1>Restyle</h1>
+      <span class="spacer"></span>
+      <label class="switch" title="Turn all themes on or off">
+        <input type="checkbox" id="all" />
+        <span></span>
+      </label>
+    </div>
+
+    <div>
+      <h2 id="site">This site</h2>
+    </div>
+    <ul class="themes" id="list" hidden></ul>
+    <div class="empty" id="empty" hidden>No themes for this site.</div>
+
+    <div class="row">
+      <span class="muted" id="status"></span>
+      <span class="spacer"></span>
+      <button id="sync">Sync</button>
+      <button id="settings">Settings</button>
+    </div>
+
+    <script src="lib.js"></script>
+    <script src="themes-list.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

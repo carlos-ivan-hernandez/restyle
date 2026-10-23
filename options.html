@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Restyle settings</title>
+    <link rel="stylesheet" href="ui.css" />
+    <style>
+      body {
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 32px 16px;
+        display: grid;
+        gap: 24px;
+      }
+      section {
+        display: grid;
+        gap: 10px;
+      }
+      input[type="url"] {
+        flex: 1;
+        min-width: 0;
+      }
+      pre {
+        margin: 0;
+        padding: 10px 12px;
+        overflow-x: auto;
+        background: var(--panel);
+        border-radius: 8px;
+        font-size: 12px;
+      }
+      ul.warnings {
+        margin: 0;
+        padding-left: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Restyle settings</h1>
+
+    <section>
+      <h2>Themes source</h2>
+      <form class="row" id="form">
+        <input type="url" id="url" placeholder="https://github.com/you/restyle-themes" required />
+        <button class="primary" id="save">Save &amp; sync</button>
+      </form>
+      <div class="muted">
+        A public GitHub repo URL, or a direct link to a <code>themes.json</code> file. Themes re-sync every 6 hours,
+        when Chrome starts, or when you press Sync.
+      </div>
+      <div id="status" class="muted"></div>
+      <ul class="warnings error" id="warnings" hidden></ul>
+    </section>
+
+    <section>
+      <div class="row">
+        <h2>Themes</h2>
+        <span class="spacer"></span>
+        <button id="sync">Sync now</button>
+      </div>
+      <ul class="themes" id="list" hidden></ul>
+      <div class="empty" id="empty" hidden>No themes yet.</div>
+    </section>
+
+    <section>
+      <h2>themes.json format</h2>
+      <pre>{
+  "themes": [
+    {
+      "name": "Wikipedia-OneSee",
+      "description": "Dark theme for Wikipedia",
+      "matches": ["*://*.wikipedia.org/*"],
+      "css": "themes/wikipedia-onesee.css"
+    }
+  ]
+}</pre>
+      <div class="muted">
+        <code>css</code> paths are relative to <code>themes.json</code>. <code>matches</code> takes Chrome match
+        patterns, or a bare domain like <code>youtube.com</code> for that site and its subdomains.
+      </div>
+    </section>
+
+    <script src="lib.js"></script>
+    <script src="themes-list.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>

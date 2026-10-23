@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Restyle",
+  "version": "0.1.0",
+  "description": "Apply your own CSS themes to websites, synced from a GitHub repo.",
+  "permissions": ["storage", "alarms", "activeTab"],
+  "host_permissions": ["https://raw.githubusercontent.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["lib.js", "content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_title": "Restyle",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html"
+}
